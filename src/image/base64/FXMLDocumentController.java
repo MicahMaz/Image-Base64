@@ -132,9 +132,9 @@ return String.valueOf(chooser.getSelectedFile());
     @FXML
     private void mnuAbout(Event e) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLAbout.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
+                Parent rootAbout = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
+                stage.setScene(new Scene(rootAbout));  
                 stage.initStyle(StageStyle.DECORATED);
                 stage.setTitle("About Image Base64");
                 stage.setResizable(false);
