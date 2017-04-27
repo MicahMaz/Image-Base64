@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="242.0" prefWidth="444.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="image.base64.FXMLAboutController">
+    <stylesheets>
+        <URL value="@fxmlabout.css" />
+    </stylesheets>
+   <children>
+      <TextArea editable="false" layoutX="70.0" layoutY="-16.0" prefHeight="200.0" prefWidth="200.0" text="Author: Siddhartha Maji&#10;Designed By: Creative Lizard&#10;Dated: 27/04/2017&#10;Version: 1.0v" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

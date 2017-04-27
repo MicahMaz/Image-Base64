@@ -12,16 +12,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JFileChooser;
 
 /**
@@ -121,6 +129,17 @@ return String.valueOf(chooser.getSelectedFile());
         btnBr.fire();
     }
     
-    
+    @FXML
+    private void mnuAbout(Event e) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLAbout.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));  
+                stage.initStyle(StageStyle.DECORATED);
+                stage.setTitle("About Image Base64");
+                stage.setResizable(false);
+                stage.show();
+          }
+   
     
 }
