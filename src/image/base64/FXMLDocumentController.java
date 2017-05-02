@@ -5,6 +5,7 @@
  */
 package image.base64;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,6 +37,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JFileChooser;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -185,9 +187,23 @@ return String.valueOf(chooser.getSelectedFile());
       });
     }
       });
-    }
+      
+      teBase64Text.textProperty().addListener((observable, oldValue, newValue) -> {
+          try {
+              // System.out.println("textfield changed from " + oldValue + " to " + newValue);
 
-   
-   
-    
+              getImageFromBase64String(newValue);
+               teBase64Text.setWrapText(true);
+          } catch (IOException ex) {
+              Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+});
+    }    
+
+    private void getImageFromBase64String(String newValue) throws IOException {
+       BASE64Decoder base64Decoder = new BASE64Decoder();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(base64Decoder.decodeBuffer(newValue));
+        Image img = new Image(inputStream);
+       imgDisplayImage.setImage(img);
+    }
 }
