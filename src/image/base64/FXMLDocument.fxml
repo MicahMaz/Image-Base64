@@ -33,15 +33,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextArea fx:id="teBase64Text" layoutX="31.0" layoutY="17.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="teBase64Text" layoutX="31.0" layoutY="17.0" prefHeight="200.0" prefWidth="200.0" promptText="Base64 String" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
       <TextField fx:id="tfBrowseLocation" editable="false" layoutX="77.0" layoutY="380.0" prefHeight="26.0" prefWidth="439.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="84.0" />
       <Text layoutX="5.0" layoutY="404.265625" strokeType="OUTSIDE" strokeWidth="0.0" text="File Path" AnchorPane.bottomAnchor="14.734375" AnchorPane.leftAnchor="5.0" />
-      <Text fill="#a1a1a1" layoutX="5.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" AnchorPane.topAnchor="37.0" />
-      <Text fill="#a1a1a1" layoutX="189.0" layoutY="49.06689453125" strokeType="OUTSIDE" strokeWidth="0.0" text="Base64 String" AnchorPane.topAnchor="37.0" />
+      <Text fill="#a1a1a1" layoutX="5.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="37.0" />
       <MenuBar layoutX="5.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
