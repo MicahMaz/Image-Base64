@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -48,7 +49,8 @@ public class FXMLDocumentController implements Initializable {
   Button btnBr;
   @FXML
   ImageView imgDisplayImage;
-    
+    @FXML
+    ScrollPane spImage;
   @FXML
   TextArea teBase64Text;
   
@@ -148,14 +150,14 @@ return String.valueOf(chooser.getSelectedFile());
           }
 
     private void onActionEvent() {
-      imgDisplayImage.setOnDragOver(event->{
+      spImage.setOnDragOver(event->{
        Dragboard db = event.getDragboard();
             if (db.hasImage() || db.hasFiles()) {
                 event.acceptTransferModes(TransferMode.COPY);
             }
       });
       
-      imgDisplayImage.setOnDragDropped(event->{
+      spImage.setOnDragDropped(event->{
                      Dragboard db = event.getDragboard();
             if (db.hasImage()) {
 //                ImageView imageView = new ImageView(db.getImage());
