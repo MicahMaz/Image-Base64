@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -27,6 +28,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -55,6 +59,8 @@ public class FXMLDocumentController implements Initializable {
         // TODO
         chooser = new JFileChooser();
         tfBrowseLocation.setText(new java.io.File("").getAbsolutePath());
+        
+        onActionEvent();
     }
 
 @FXML
@@ -140,6 +146,46 @@ return String.valueOf(chooser.getSelectedFile());
                 stage.setResizable(false);
                 stage.show();
           }
+
+    private void onActionEvent() {
+      imgDisplayImage.setOnDragOver(event->{
+       Dragboard db = event.getDragboard();
+            if (db.hasImage() || db.hasFiles()) {
+                event.acceptTransferModes(TransferMode.COPY);
+            }
+      });
+      
+      imgDisplayImage.setOnDragDropped(event->{
+                     Dragboard db = event.getDragboard();
+            if (db.hasImage()) {
+//                ImageView imageView = new ImageView(db.getImage());
+//                imageView.setFitHeight(IMAGE_SIZE);
+//                imageView.setFitWidth(IMAGE_SIZE);
+//                imageView.setPreserveRatio(true);
+//                imagePane.getChildren().add(imageView);
+                imgDisplayImage.setImage(db.getImage());
+                event.setDropCompleted(true);
+            } else if (db.hasFiles()) {
+                db.getFiles().forEach(file -> {
+                    try {
+                        Image i = new Image(file.toURI().toString());
+                        
+                        Image image = new Image(file.toURI().toString(), i.getWidth(), i.getHeight(), true, true);
+                           imgDisplayImage.setImage(image);
+                           teBase64Text.setText(encodeFileToBase64Binary(file));
+//                        ImageView imageView = new ImageView(image);
+//                        imagePane.getChildren().add(imageView);
+                            teBase64Text.setWrapText(true);
+                        tfBrowseLocation.setText(file.toURI().toString());
+                    } catch (Exception exc) {
+                        System.out.println("Could not load image "+file);
+                    }
+      });
+    }
+      });
+    }
+
+   
    
     
 }
